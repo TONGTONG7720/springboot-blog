@@ -50,7 +50,7 @@ public class SecurityConfig {
                 // 公开接口 - 无需登录
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/articles/**").permitAll()
-                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()  // 如果用 H2 可取消注释
 
                 // 需要登录的接口
                 .requestMatchers(HttpMethod.POST, "/api/articles/**").authenticated()
