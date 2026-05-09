@@ -1,0 +1,3 @@
+-- H2 数据库初始化脚本
+-- 知识点: Spring Boot 会自动执行 classpath 下的 schema.sql 和 data.sql
+-- 这里留空，我们用 DataInitializer (CommandLineRunner) 来初始化数据

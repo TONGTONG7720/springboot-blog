@@ -1,0 +1,57 @@
+# ==============================
+# Spring Boot 配置文件（增强版）
+# ==============================
+
+server:
+  port: 8080
+
+spring:
+  # 数据源 - H2 内存数据库
+  datasource:
+    url: jdbc:h2:mem:blogdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # ====== Redis 配置 ======
+  # 默认连接 localhost:6379，如果没装 Redis 会启动报错
+  # 可以用 spring.data.redis.host 指定远程地址
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # 如果 Redis 有密码，取消注释：
+      # password: your-password
+      timeout: 3000ms
+
+  # ====== 缓存配置 ======
+  cache:
+    type: redis
+    redis:
+      time-to-live: 1800000  # 默认缓存 30 分钟（毫秒）
+
+# JWT 配置
+jwt:
+  # 实际项目请换成随机生成的长密钥！
+  secret: MySuperSecretKeyForBlogProjectMustBeAtLeast256BitsLong!!
+  expiration: 86400000  # 24 小时
+
+# 日志
+logging:
+  level:
+    com.example.blog: DEBUG
+    org.hibernate.SQL: DEBUG
